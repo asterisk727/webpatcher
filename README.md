@@ -1,15 +1,15 @@
-# [TWO-TORIAL](https://two-torial.xyz)'s Web Patcher
+# A Temporary Mirror of [TWO-TORIAL](https://two-torial.xyz)'s Web Patcher
 
-### URL: [https://patcher.two-torial.xyz/](https://patcher.two-torial.xyz/)
+### URL: [https://patcher.maimaidxprism.plus/](https://patcher.maimaidxprism.plus/)
 
 ## About
 
-This repo contains web patches for games incompatible with [spice2x](https://spice2x.github.io/). See our [spice2x patcher](https://github.com/two-torial/sp2xpatcher/) for those.   
+This repo contains web patches for games incompatible with [spice2x](https://spice2x.github.io/). See our [spice2x patcher](https://github.com/asterisk727/sp2xpatcher/) for those.   
 We'll be keeping the **repo public** and **url alive** for as long as possible, **feel free to [contibute](#Contributing)** for the community through pull requests!
 
 ## Usage
 
-See our guide on [web patching](https://two-torial.xyz/extras/patchweb/) and use the url provided above.
+See our guide on [web patching](https://two-torial.maimaidxprism.plus/extras/patchweb/) and use the url provided above.
 
 ## Contributing
 
