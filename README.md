@@ -2,6 +2,9 @@
 
 ### URL: [https://patcher.maimaidxprism.plus/](https://patcher.maimaidxprism.plus/)
 
+> [!CAUTION]
+> **This is a mirror of the original TWO-TORIAL spice2x patcher. Read more info about this mirror [here](https://two-torial-info.maimaidxprism.plus/)**
+
 ## About
 
 This repo contains web patches for games incompatible with [spice2x](https://spice2x.github.io/). See our [spice2x patcher](https://github.com/asterisk727/sp2xpatcher/) for those.   
