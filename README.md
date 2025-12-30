@@ -1,6 +1,6 @@
 # A Temporary Mirror of [TWO-TORIAL](https://two-torial.xyz)'s Web Patcher
 
-### URL: [https://patcher.maimaidxprism.plus/](https://patcher.maimaidxprism.plus/)
+### URL: [https://webpatcher.maimaidxprism.plus/](https://webpatcher.maimaidxprism.plus/)
 
 > [!CAUTION]
 > **This is a mirror of the original TWO-TORIAL webpatcher. Read more info about this mirror [here](https://two-torial-info.maimaidxprism.plus/)**
