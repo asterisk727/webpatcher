@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>CHUNITHM XVERSEX Modder</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/dllpatcher.js"></script>
+    <script type="text/javascript">
+        window.addEventListener("load", function () {
+            new PatchContainer([
+                new Patcher("chusanApp.exe", "2.45", [
+                    {
+                        name: "Force shared audio mode",
+                        tooltip: "Improves compatibility, but may increase latency",
+                        patches: [
+                            {offset: 0xE29393, off: [0x01], on: [0x00]}
+                        ]
+                    },
+                    {
+                        name: "Force 2 channel audio output",
+                        tooltip: "May cause bass overload",
+                        patches: [
+                            {offset: 0xE2944B, off: [0x75, 0x3f], on: [0x90, 0x90]}
+                        ]
+                    },
+                    {
+                        name: "Disable song select timer",
+                        patches: [
+                            {offset: 0x3D4110, off: [0x32, 0xC0], on: [0xB0, 0x01]}
+                        ]
+                    },
+                    {
+                        name: "Map selection timer",
+                        tooltip: "If set to negative, the timer becomes 968 + value (e.g. 968 + -1 = 967)",
+                        type: "number",
+                        offset: 0x944658,
+                        size: 1,
+                        min: -128,
+                        max: 127,
+                    },
+                    {
+                        name: "Ticket selection timer",
+                        tooltip: "If set to negative, the timer becomes 968 + value (e.g. 968 + -1 = 967)",
+                        type: "number",
+                        offset: 0x939792,
+                        size: 1,
+                        min: -128,
+                        max: 127,
+                    },
+                    {
+                        name: "Course selection timer",
+                        tooltip: "If set to negative, the timer becomes 968 + value (e.g. 968 + -1 = 967)",
+                        type: "number",
+                        offset: 0x9E68A1,
+                        size: 1,
+                        min: -128,
+                        max: 127,
+                    },
+                    {
+                        name: "Unlimited maximum tracks",
+                        tooltip: "Must check to play more than 7 tracks per credit",
+                        patches: [
+                            {offset: 0x6F8B82, off: [0xf0], on: [0xc0]}
+                        ]
+                    },
+                    {
+                        type: "number",
+                        name: "Maximum tracks",
+                        offset: 0x3EE331,
+                        size: 4,
+                        min: 3,
+                        max: 12
+                    },
+                    {
+                        name: "No encryption",
+                        tooltip: "Will also disable TLS",
+                        patches: [
+                            {offset: 0x17D200C, off: [0xF5], on: [0x00]},
+                            {offset: 0x17D2010, off: [0xF5], on: [0x00]}
+                        ]
+                    },
+                    {
+                        name: "Patch for head-to-head play",
+                        tooltip: "Fix infinite sync while trying to connect to head to head play",
+                        patches: [
+                            {offset: 0x65F8F2, off: [0x01], on: [0x00]}
+                        ]
+                    },
+                    {
+                        name: "Bypass 1080p monitor check",
+                        patches: [
+                            {offset: 0x15811C, off: [0x81, 0xBC, 0x24, 0x34, 0x02, 0x00, 0x00, 0x80, 0x07, 0x00, 0x00, 0x75, 0x1F, 0x81, 0xBC, 0x24, 0x38, 0x02, 0x00, 0x00, 0x38, 0x04, 0x00, 0x00, 0x75, 0x12], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90]}
+                        ]
+                    },
+                    {
+                        name: "Bypass 120Hz monitor check",
+                        patches: [
+                            {offset: 0x15810E, off: [0x85, 0xC0, 0x74, 0x3F], on: [0xEB, 0x30, 0xEB, 0x2E]}
+                        ]
+                    },
+					{
+						name: "Bypass AppUser check",
+						patches: [
+                            {offset: 0x89075, off: [0x75], on: [0xEB]}
+						],
+					},
+                    {
+                        name: "Force FREE PLAY credit text",
+                        tooltip: "Replaces the credit count with FREE PLAY",
+                        patches: [
+                            {offset: 0x3DF4E4, off: [0x3c, 0x01], on: [0x38, 0xc0]}
+                        ]
+                    },
+                    {
+                        type: "number",
+                        name: "Custom FREE PLAY text length",
+                        tooltip: "Changes the length of the text displayed when Force FREE PLAY credit text is enabled",
+						danger: "If this is longer than 11 characters, \"Force FREE PLAY credit text\" MUST be enabled.",
+                        offset: 0x3DF4E9,
+                        size: 1,
+                        min: 0,
+                        max: 27,
+                    },
+                    {
+                        type: "hex",
+                        name: "Custom FREE PLAY text",
+                        tooltip: "Replace the FREE PLAY text when using Infinite credits",
+                        offset: 0x14AD9BC,
+                        off: [0x46, 0x52, 0x45, 0x45, 0x20, 0x50, 0x4c, 0x41, 0x59],
+                    },
+					{
+                        name: "Skip map animation",
+						tooltip: "Skip the map move forward animation after playing the song",
+                        patches: [
+                            { offset: 0x8D63DA, off: [0x01], on: [0x00] },
+                        ],
+                    },
+                    {
+                        name: "Set all timers to 999",
+                        danger: "[DEPRECATED] Breaks online matching functionality",
+                        patches: [
+                            {offset: 0x8604F0, off: [0x69, 0x44, 0x24, 0x04, 0xe8, 0x03, 0x00, 0x00], on: [0xb8, 0x58, 0x3e, 0x0f, 0x00, 0x90, 0x90, 0x90]}
+                        ]
+                    },
+                ]),
+			]);
+            new PatchContainer([
+                new Patcher("amdaemon.exe", "91f83d14", [
+                    {
+                        name: "Allow 127.0.0.1/localhost as the network server",
+                        patches: [
+                            { offset: 0x732714, off: [0x31, 0x32, 0x37, 0x2f], on: [0x30, 0x2f, 0x38, 0x00] },
+                            { offset: 0x3F6124, off: [0xff, 0x15, 0xfe, 0xb7, 0x1b, 0x00, 0x8b], on: [0x33, 0xc0, 0x48, 0x83, 0xc4, 0x28, 0xc3] }
+                        ]
+                    },
+                    {
+                        name: "Credit freeze",
+                        tooltip: "Prevents credits from being used. At least one credit must be available to start the game or purchase premium tickets.",
+                        patches: [
+                            { offset: 0x2DD8F8, off: [0x28], on: [0x08] }
+                        ]
+                    },
+                ]),
+            ]);
+        });
+    </script>
+</head>
+
+<body>
+    <h1>CHUNITHM XVERSEX Modder</h1>
+</body>
+
+</html>
